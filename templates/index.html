@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Go + HTMX + Tailwind</title>
+  
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- HTMX via CDN -->
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans p-4">
+
+  <h1 class="text-2xl font-bold mb-4">Welcome</h1>
+
+  <button 
+    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+    hx-get="/hello" 
+    hx-target="#response" 
+    hx-swap="innerHTML"
+  >
+    Say Hello
+  </button>
+
+  <div id="response" class="mt-4 text-lg"></div>
+
+</body>
+</html>
