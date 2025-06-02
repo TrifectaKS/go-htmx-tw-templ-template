@@ -2,18 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Go + HTMX + Tailwind</title>
-  
+  <title>Go + HTMX + Tailwind + Alpine</title>
+
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
+  <!-- Alpine JS via CDN -->
+  <script src="//unpkg.com/alpinejs" defer></script>
+
   <!-- HTMX via CDN -->
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans p-4">
+<body class="bg-gray-100 text-gray-900 font-sans p-4" x-data="{ showInfo: false }">
 
   <h1 class="text-2xl font-bold mb-4">Welcome</h1>
 
+  <!-- HTMX Button -->
   <button 
     class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
     hx-get="/hello" 
@@ -23,6 +27,20 @@
     Say Hello
   </button>
 
+  <!-- AlpineJS toggle button -->
+  <button 
+    class="ml-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+    @click="showInfo = !showInfo"
+  >
+    Toggle Info
+  </button>
+
+  <!-- AlpineJS controlled section -->
+  <div x-show="showInfo" class="mt-4 text-md text-gray-700">
+    This is a message toggled with Alpine.js!
+  </div>
+
+  <!-- HTMX response container -->
   <div id="response" class="mt-4 text-lg"></div>
 
 </body>
